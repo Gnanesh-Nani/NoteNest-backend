@@ -5,9 +5,9 @@
 ### 📁 `server/README.md` (Backend Repo)
 
 ```markdown
-# 🧠 Notes Web App – Backend (Node.js + Express)
+# 🧠 NoteNest – Backend (Node.js + Express)
 
-This is the backend for the **Notes Web App**, handling authentication, note management, and OTP-based password recovery.
+This is the backend for the **NoteNest**, handling authentication, note management, and OTP-based password recovery.
 
 ---
 
