@@ -1,9 +1,15 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const { validationResult } = require('express-validator');
 
 // Signup new user
 const signup = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
   const { email, password } = req.body;
   console.log('Request Body:', req.body);
 
@@ -27,6 +33,8 @@ const signup = async (req, res) => {
 
 // Login existing user
 const login = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
   const { email, password } = req.body;
 
   try {

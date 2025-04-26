@@ -84,5 +84,49 @@ const deleteNote = async (req, res) => {
     res.status(500).json({ message: 'Error deleting note', error });
   }
 };
+const updateNote = async (req, res) => {
+  const { noteId } = req.params;
+  const { title, content, dueDate } = req.body;
+  const userId = req.userId; // From authMiddleware
 
-module.exports = { createNote, getNotes, completeNote, deleteNote };
+  try {
+    const note = await Note.findOne({ _id: noteId, user: userId });
+
+    if (!note) {
+      return res.status(404).json({ message: 'Note not found' });
+    }
+
+    // Update fields
+    if (title) note.title = title;
+    if (content) note.content = content;
+    if (dueDate) note.dueDate = dueDate;
+
+    await note.save();
+    res.status(200).json({ message: 'Note updated successfully', note });
+  } catch (error) {
+    res.status(500).json({ message: 'Error updating note', error });
+  }
+};
+const searchNotes = async (req, res) => {
+  const userId = req.userId; // From authMiddleware
+  const { query } = req.query;
+
+  try {
+    const notes = await Note.find({
+      user: userId,
+      $or: [
+        { title: { $regex: query, $options: 'i' } },  // 'i' makes it case-insensitive
+        { content: { $regex: query, $options: 'i' } }
+      ]
+    });
+
+    res.status(200).json({message:'notes found',notes});
+  } catch (error) {
+    res.status(500).json({ message: 'Error searching notes', error });
+  }
+};
+
+
+module.exports = { createNote, getNotes, completeNote, deleteNote, updateNote ,searchNotes};
+
+
