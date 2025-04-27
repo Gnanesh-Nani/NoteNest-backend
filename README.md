@@ -7,7 +7,7 @@
 ```markdown
 # 🧠 NoteNest – Backend (Node.js + Express)
 
-This is the backend for the **NoteNest**, handling authentication, note management, and OTP-based password recovery.
+This is the backend for the **NoteNest**, handling authentication, note management, and OTP-based password recovery(still need to be added).
 
 ---
 
@@ -18,7 +18,7 @@ This is the backend for the **NoteNest**, handling authentication, note manageme
 - MongoDB + Mongoose
 - BcryptJS
 - JSON Web Tokens (JWT)
-- Nodemailer + RandomString
+- Nodemailer + RandomString (pending)
 - CORS
 - Dotenv
 
@@ -28,12 +28,12 @@ This is the backend for the **NoteNest**, handling authentication, note manageme
 
 ### 🔐 Auth
 - `POST /signup` – Register a new user
-- `POST /signin` – Login and receive JWT
-- `POST /forgot-password` – Send OTP
-- `POST /verify-otp` – Verify OTP & reset password
+- `POST /login` – Login and receive JWT
+- `POST /forgot-password` – Send OTP (pending)
+- `POST /verify-otp` – Verify OTP & reset password (pending)
 
 ### 📝 Notes (JWT Protected)
-- `GET /notes` – Fetch all notes
+- `GET /notes` – Fetch all notes 
 - `POST /notes` – Add a new note
 - `PUT /notes/:id/complete` – Toggle note as completed
 - `DELETE /notes/:id` – Permanently delete note
