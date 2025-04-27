@@ -1,53 +1,50 @@
-# NoteNest-backend
 
----
-
-### 📁 `server/README.md` (Backend Repo)
-
-```markdown
 # 🧠 NoteNest – Backend (Node.js + Express)
 
-This is the backend for the **NoteNest**, handling authentication, note management, and OTP-based password recovery(still need to be added).
-
+NoteNest is a simple and secure note management tool backend built with Node.js, Express, and MongoDB.
+It handles user authentication, note creation, editing, and deletion, all secured with JWT tokens.
+OTP-based password recovery support is planned for future updates.
+Designed for reliability, scalability, and ease of use.
 ---
 
 ## 🧰 Tech Stack
 
-- Node.js
-- Express.js
-- MongoDB + Mongoose
-- BcryptJS
-- JSON Web Tokens (JWT)
-- Nodemailer + RandomString (pending)
-- CORS
-- Dotenv
+- **Node.js**
+- **Express.js**
+- **MongoDB** + **Mongoose**
+- **BcryptJS**
+- **JSON Web Tokens (JWT)**
+- **Nodemailer** + **RandomString** (pending)
+- **CORS**
+- **Dotenv**
 
 ---
 
 ## 📦 API Routes
 
-### 🔐 Auth
-- `POST /signup` – Register a new user
-- `POST /login` – Login and receive JWT
-- `POST /forgot-password` – Send OTP (pending)
-- `POST /verify-otp` – Verify OTP & reset password (pending)
+### 🔐 Authentication
+- `POST /signup` — Register a new user
+- `POST /login` — Login and receive a JWT token
+- `POST /forgot-password` — Send OTP (pending)
+- `POST /verify-otp` — Verify OTP & reset password (pending)
 
-### 📝 Notes (JWT Protected)
-- `GET /notes` – Fetch all notes 
-- `POST /notes` – Add a new note
-- `PUT /notes/:id/complete` – Toggle note as completed
-- `DELETE /notes/:id` – Permanently delete note
+### 📝 Notes (Protected with JWT)
+- `GET /notes` — Fetch all notes
+- `POST /notes` — Add a new note
+- `PUT /notes/:id/complete` — Toggle a note as completed
+- `DELETE /notes/:id` — Permanently delete a note
 
 ---
 
 ## 🛠️ Setup Instructions
 
 ```bash
-# Navigate to server folder
+# Navigate to the server folder
 cd server
 
-# Install dependencies
+# Install all dependencies
 npm install
 
-# Start server
+# Start the development server
 npm run dev
+```
