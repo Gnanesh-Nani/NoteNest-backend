@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const cors=require('cors');
 const connectDB = require('./config/db');
 const cors = require('cors');
 // Controllers and routes
@@ -7,7 +8,10 @@ const authRoutes = require('./api/auth');
 const noteRoutes = require('./api/notes');
 
 const app = express();
-
+app.use(cors({
+  origin: 'http://localhost:3000'
+}));
+// Enable CORS for all routes
 // Middleware to parse JSON
 app.use(express.json());
 
@@ -25,9 +29,7 @@ connectDB();
 app.use('/api/auth', authRoutes);  // Authentication routes
 app.use('/api/notes', noteRoutes); // Notes routes
 
-app.get('/', (req, res) => {
-  res.send('Welcome to NoteNest API!');
-});
+
 
 app.use((req, res, next) => {
   res.status(404).json({ message: 'Route not found' });
