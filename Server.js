@@ -13,11 +13,7 @@ app.use(cors());
 // Middleware to parse JSON
 app.use(express.json());
 
-app.use(cors({
-  origin: process.env.CROSS_ORIGIN || '*', 
-  methods: ['GET', 'POST', 'PUT', 'DELETE','PATCH'],
-  credentials: true,
-}));
+
 
 // Connect to MongoDB
 connectDB();
