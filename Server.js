@@ -8,9 +8,7 @@ const authRoutes = require('./api/auth');
 const noteRoutes = require('./api/notes');
 
 const app = express();
-app.use(cors({
-  origin: 'http://localhost:3000'
-}));
+app.use(cors());
 // Enable CORS for all routes
 // Middleware to parse JSON
 app.use(express.json());
